@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProductivityTool.Data.Activity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivityType.ActivityType1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lkp_SizingUnit.SizingUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activity1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivityType.ActivityType1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lkp_SizingUnit.SizingUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activity1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PK_ActivityID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PK_ActivityID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PK_ActivityID })
+        </td>
+    </tr>
+}
+
+</table>

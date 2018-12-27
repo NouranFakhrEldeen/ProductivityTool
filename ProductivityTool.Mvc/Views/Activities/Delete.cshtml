@@ -1,0 +1,48 @@
+﻿@model ProductivityTool.Data.Activity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Activity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityType.ActivityType1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityType.ActivityType1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lkp_SizingUnit.SizingUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lkp_SizingUnit.SizingUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activity1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activity1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

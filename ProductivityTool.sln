@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTool.Mvc", "ProductivityTool.Mvc\ProductivityTool.Mvc.csproj", "{8809A121-2018-47B4-A920-7CE078E75185}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductivityTool.Data", "ProductivityTool.Data\ProductivityTool.Data.csproj", "{0261E49D-2496-4B88-AF29-E96D06F5FCE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8809A121-2018-47B4-A920-7CE078E75185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8809A121-2018-47B4-A920-7CE078E75185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8809A121-2018-47B4-A920-7CE078E75185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8809A121-2018-47B4-A920-7CE078E75185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0261E49D-2496-4B88-AF29-E96D06F5FCE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0261E49D-2496-4B88-AF29-E96D06F5FCE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0261E49D-2496-4B88-AF29-E96D06F5FCE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0261E49D-2496-4B88-AF29-E96D06F5FCE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
