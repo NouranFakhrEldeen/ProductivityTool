@@ -6,28 +6,16 @@ namespace ProductivityTool.Data
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ActivityType")]
-    public partial class ActivityType
+
+    public class ActivityType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ActivityType()
-        {
-            Activities = new HashSet<Activity>();
-        }
-
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PK_ActivityTypeID { get; set; }
-
-        public int FK_ActivityCategoryID { get; set; }
-
-        [Column("ActivityType")]
+        public int ID { get; set; }
         [Required]
-        public string ActivityType1 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public string Name { get; set; }
         public virtual ICollection<Activity> Activities { get; set; }
-
+        [ForeignKey("ActivityCategory")]
+        public int ActivityCategoryId { get; set; }
         public virtual ActivityCategory ActivityCategory { get; set; }
     }
 }

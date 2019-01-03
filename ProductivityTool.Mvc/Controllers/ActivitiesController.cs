@@ -17,7 +17,7 @@ namespace ProductivityTool.Mvc.Controllers
         // GET: Activities
         public ActionResult Index()
         {
-            var activities = db.Activities.Include(a => a.ActivityType).Include(a => a.lkp_SizingUnit);
+            var activities = db.Activities.Include(a => a.ActivityType);
             return View(activities.ToList());
         }
 
@@ -39,8 +39,7 @@ namespace ProductivityTool.Mvc.Controllers
         // GET: Activities/Create
         public ActionResult Create()
         {
-            ViewBag.FK_ActivityTypeID = new SelectList(db.ActivityTypes, "PK_ActivityTypeID", "ActivityType1");
-            ViewBag.FK_SizingUnitID = new SelectList(db.lkp_SizingUnit, "PK_SizingUnitID", "SizingUnit");
+            ViewBag.ActivityTypeId = new SelectList(db.ActivityTypes, "ID", "Name");
             return View();
         }
 
@@ -48,8 +47,8 @@ namespace ProductivityTool.Mvc.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PK_ActivityID,FK_ActivityTypeID,Activity1,FK_SizingUnitID")] Activity activity)
+        
+        public ActionResult Create([Bind(Include = "Id,Name,SizingUnitID,ActivityTypeId")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +57,7 @@ namespace ProductivityTool.Mvc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_ActivityTypeID = new SelectList(db.ActivityTypes, "PK_ActivityTypeID", "ActivityType1", activity.FK_ActivityTypeID);
-            ViewBag.FK_SizingUnitID = new SelectList(db.lkp_SizingUnit, "PK_SizingUnitID", "SizingUnit", activity.FK_SizingUnitID);
+            ViewBag.ActivityTypeId = new SelectList(db.ActivityTypes, "ID", "Name", activity.ActivityTypeId);
             return View(activity);
         }
 
@@ -75,8 +73,7 @@ namespace ProductivityTool.Mvc.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_ActivityTypeID = new SelectList(db.ActivityTypes, "PK_ActivityTypeID", "ActivityType1", activity.FK_ActivityTypeID);
-            ViewBag.FK_SizingUnitID = new SelectList(db.lkp_SizingUnit, "PK_SizingUnitID", "SizingUnit", activity.FK_SizingUnitID);
+            ViewBag.ActivityTypeId = new SelectList(db.ActivityTypes, "ID", "Name", activity.ActivityTypeId);
             return View(activity);
         }
 
@@ -84,8 +81,8 @@ namespace ProductivityTool.Mvc.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PK_ActivityID,FK_ActivityTypeID,Activity1,FK_SizingUnitID")] Activity activity)
+        
+        public ActionResult Edit([Bind(Include = "Id,Name,SizingUnitID,ActivityTypeId")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -93,8 +90,7 @@ namespace ProductivityTool.Mvc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_ActivityTypeID = new SelectList(db.ActivityTypes, "PK_ActivityTypeID", "ActivityType1", activity.FK_ActivityTypeID);
-            ViewBag.FK_SizingUnitID = new SelectList(db.lkp_SizingUnit, "PK_SizingUnitID", "SizingUnit", activity.FK_SizingUnitID);
+            ViewBag.ActivityTypeId = new SelectList(db.ActivityTypes, "ID", "Name", activity.ActivityTypeId);
             return View(activity);
         }
 
@@ -115,7 +111,7 @@ namespace ProductivityTool.Mvc.Controllers
 
         // POST: Activities/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult DeleteConfirmed(int id)
         {
             Activity activity = db.Activities.Find(id);

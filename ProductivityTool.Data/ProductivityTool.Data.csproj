@@ -59,17 +59,44 @@
     <Compile Include="Entities\Demand.cs" />
     <Compile Include="Entities\lkp_SizingUnit.cs" />
     <Compile Include="Entities\Project.cs" />
+    <Compile Include="Migrations\201901020803313_v0.0.cs" />
+    <Compile Include="Migrations\201901020803313_v0.0.Designer.cs">
+      <DependentUpon>201901020803313_v0.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901020834406_v0.1.cs" />
+    <Compile Include="Migrations\201901020834406_v0.1.Designer.cs">
+      <DependentUpon>201901020834406_v0.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901020840559_v0.2.cs" />
+    <Compile Include="Migrations\201901020840559_v0.2.Designer.cs">
+      <DependentUpon>201901020840559_v0.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901021322170_v0.3.cs" />
+    <Compile Include="Migrations\201901021322170_v0.3.Designer.cs">
+      <DependentUpon>201901021322170_v0.3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\RoleProfile.cs" />
-    <Compile Include="Entities\RoleProfileActivityCategory.cs" />
-    <Compile Include="Entities\sysdiagram.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\UsersRolesProfile.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901020803313_v0.0.resx">
+      <DependentUpon>201901020803313_v0.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901020834406_v0.1.resx">
+      <DependentUpon>201901020834406_v0.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901020840559_v0.2.resx">
+      <DependentUpon>201901020840559_v0.2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901021322170_v0.3.resx">
+      <DependentUpon>201901021322170_v0.3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

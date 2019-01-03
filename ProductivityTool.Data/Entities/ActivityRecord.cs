@@ -5,22 +5,18 @@ namespace ProductivityTool.Data
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
-    [Table("ActivityRecord")]
-    public partial class ActivityRecord
+    
+    public  class ActivityRecord
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PK_ActivityRecordID { get; set; }
-
+        public int Id { get; set; }
         [Column(TypeName = "date")]
         public DateTime ActivityDate { get; set; }
+        public int ActivityID { get; set; }
 
-        public int FK_ActivityID { get; set; }
+        public int? DemandID { get; set; }
 
-        public int? FK_DemandID { get; set; }
-
-        public int? FK_ProjectID { get; set; }
+        public int? ProjectID { get; set; }
 
         public int? Size { get; set; }
 
