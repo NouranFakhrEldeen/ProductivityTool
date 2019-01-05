@@ -31,24 +31,30 @@
             </div>
         </div>
 
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.ActivityType.Name, "ActivityTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @*  @Html.LabelFor(model => model.ActivityCategory.Name, "ActivityCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label for="ddl_Category" class="control-label col-md-2">Category</label>
             <div class="col-md-10">
-                @Html.DropDownList("ActivityTypeId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ActivityTypeId, "", new { @class = "text-danger" })
+                @Html.DropDownList("ddl_Category", (IEnumerable<SelectListItem>)ViewBag.ActivityCategory
+                //((IEnumerable<SelectListItem>)Model.ActivityType.ActivityCategory).Select(r => new SelectListItem()
+                //  { Text = r. , Value = r.Value })
+                , htmlAttributes: new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.ActivityType.ActivityCategory, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ActivityType.Name, "ActivityType", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10 ddl-type-div">
+                @*@Html.DropDownList("ActivityTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ActivityTypeId, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.ActivityType.ActivityCategory, "ActivityCategory", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ActivityCategory", ((IEnumerable<SelectListItem>)Model.ActivityType.ActivityCategory).Select(r => new SelectListItem()
-           { Text = r.Text, Value = r.Value }), htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ActivityTypeId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
+    
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -65,3 +71,26 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(function () {
+        $("[name=ddl_Category]").on("change", function () {
+            let val = $(this).val();
+            $.ajax({
+                method: "POST",
+                url: "GetByCategory/" + val
+            }).done(function (res) {
+                console.log(res);
+                $ddl_div = $(".ddl-type-div")
+                $ddl_div.empty();
+                $ddl_div.append(`<select id="ddl_type" name="ddl_type"></select>`);
+                $("#ddl_type").append("<option value> please select ....</option>");
+                for (var type in res)
+                {           
+                    $("#ddl_type").append(` <option value="${type.ID}">${type.Name}</option> `);
+                }
+            });
+        });
+    });
+</script>
